@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Teste
+    runs-on: ubuntu-latest
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
+    - name: Expo GitHub Action
+      uses: expo/expo-github-action@8.0.0
+      with:
+        expo-version: 6.x
+    - run: npm install
+    - run: npm run build --if-present
