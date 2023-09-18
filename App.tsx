@@ -3,7 +3,7 @@ import {
   SafeAreaView,
   StyleSheet,
   ActivityIndicator,
-  View,
+  Platform,
 } from "react-native";
 import {
   useFonts,
@@ -26,11 +26,13 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
       {fontsLoaded && !fontError ? (
-        <View style={styles.loader}>
+        <SafeAreaView style={styles.loader}>
           <ActivityIndicator />
-        </View>
+        </SafeAreaView>
       ) : (
-        <Main />
+        <SafeAreaView style={styles.wrapper}>
+          <Main />
+        </SafeAreaView>
       )}
     </SafeAreaView>
   );
@@ -46,5 +48,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  wrapper: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? 40 : 0,
   },
 });
