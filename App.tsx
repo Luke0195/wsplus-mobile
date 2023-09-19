@@ -1,39 +1,25 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  SafeAreaView,
-  StyleSheet,
-  ActivityIndicator,
-  Platform,
-} from "react-native";
-import {
-  useFonts,
-  Inter_400Regular,
-  Inter_600SemiBold,
-  Inter_700Bold,
-} from "@expo-google-fonts/inter";
+import { SafeAreaView, StyleSheet, Platform } from "react-native";
+import { useFontsHook } from "./src/hooks/fonts";
+import * as SplashScreen from "expo-splash-screen";
 import { Main } from "./src/components/App";
-import React from "react";
+import React, { useCallback } from "react";
 
 export default function App() {
-  //@ts-ignore
-  let { fontsLoaded, fontError } = useFonts({
-    Inter_400Regular,
-    Inter_600SemiBold,
-    Inter_700Bold,
-  });
+  const [fontsLoaded] = useFontsHook();
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
 
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar style="light" />
-      {fontsLoaded && !fontError ? (
-        <SafeAreaView style={styles.loader}>
-          <ActivityIndicator />
-        </SafeAreaView>
-      ) : (
-        <SafeAreaView style={styles.wrapper}>
-          <Main />
-        </SafeAreaView>
-      )}
+      <Main />
     </SafeAreaView>
   );
 }
