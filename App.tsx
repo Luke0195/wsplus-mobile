@@ -2,16 +2,15 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Platform } from "react-native";
 import { useFontsHook } from "./src/hooks/fonts";
 import { layoutView } from "./src/hooks/layout";
-import * as SplashScreen from "expo-splash-screen";
 import { Main } from "./src/components/App";
-import React, { useCallback } from "react";
+import React from "react";
 
 export default function App() {
   const [fontsLoaded] = useFontsHook();
-
   if (!fontsLoaded) {
     return null;
   }
+
   return (
     <SafeAreaView
       style={styles.container}

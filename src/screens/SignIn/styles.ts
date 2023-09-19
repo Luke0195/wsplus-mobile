@@ -11,38 +11,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
 
-  titleContainer: {
-    width: "100%",
-    marginTop: 8,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  logo: {
-    width: "100%",
-    fontSize: 36,
-    marginVertical: 8,
-    color: "#c31c79",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    fontFamily: "Inter_700Bold",
-  },
-
-  textLayer: {
-    color: "#fff",
-    paddingLeft: 4,
-  },
-
-  description: {
-    fontSize: 13,
-    color: "#c8c8c8",
-    margin: 0,
-    fontFamily: "Inter_400Regular",
-  },
-
   form: {
     marginTop: 42,
     flexDirection: "column",

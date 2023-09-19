@@ -1,4 +1,5 @@
 import React from "react";
+import { Logo } from "../../components";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { styles } from "./styles";
@@ -6,15 +7,8 @@ import { styles } from "./styles";
 export function SignIn() {
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.logo}>
-          WSP<Text style={styles.textLayer}>lus!</Text>
-        </Text>
-        <Text style={styles.description}>
-          A gestão da sua organização na palma da sua mão.
-        </Text>
-      </View>
       <View style={styles.form}>
+        <Logo />
         <Text style={styles.formLabelText}> Faça o seu Login </Text>
         <View style={styles.formField}>
           <Feather name="mail" color="#c8c8c8" size={18} />
